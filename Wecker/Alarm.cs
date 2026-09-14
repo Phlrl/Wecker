@@ -8,9 +8,10 @@ namespace Wecker
         private string description;
         private DateTime time;
 
-        public Alarm(string name, string description)
+        public Alarm(string n, string d)
         {
-            
+            name = n;
+            description = d;
         }
 
         public void setTime(DateTime t)
@@ -31,6 +32,11 @@ namespace Wecker
         public string getDescrition()
         {
             return description;
+        }
+
+        public bool istAusgeloest(DateTime t)
+        {
+            return time <= t;
         }
     }
 }
