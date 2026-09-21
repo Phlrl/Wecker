@@ -1,10 +1,12 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Wecker
 {
     public class Program
     {
         private Wecker w;
+        private static Program p;
 
         private void addAlarms(List<Alarm> alarms)
         {
@@ -24,17 +26,28 @@ namespace Wecker
             return ausgeloesteAlarme;
         }
 
+        private static void checkAlarms()
+        {
+            while (true)
+            {
+                Thread.Sleep(5000);
+                List<Alarm> al = p.checkForAlarms();
+
+                foreach (var ausgeloesterAlarm in al)
+                {
+                    Console.WriteLine("Alarm " + ausgeloesterAlarm.getName() + " wurde ausgelöst");
+                }
+            }
+        } 
+
         private static void Main(string[] args)
         {
-            Program p = new Program();
+            p = new Program();
             
             p.w =  Wecker.getInstance();
 
-
             DateTime aktuelleZeit = DateTime.Now;
             DateTime aktuelleZeitPlus10Sek = aktuelleZeit.AddSeconds(10); 
-            Console.WriteLine(aktuelleZeit);
-            Console.WriteLine(aktuelleZeitPlus10Sek);
             
             List<Alarm> neueAlarme = new List<Alarm>();
             Alarm neuerAlarm = new Alarm("Alarm1" , "Morgen");
@@ -43,18 +56,19 @@ namespace Wecker
             neueAlarme.Add(neuerAlarm);
             p.addAlarms(neueAlarme);
 
-
-            for (int i = 0; i < 11; i++)
+            Thread t = new Thread(checkAlarms);
+            t.Start();
+            
+            while (true)
             {
-                Thread.Sleep(1000);
-                List<Alarm> al = p.checkForAlarms();
-
-                foreach (var ausgeloesterAlarm in al)
+                Console.WriteLine("Stop eingeben um Wecker zu beenden");
+                string eingabe = Console.ReadLine();
+                if (eingabe == "Stop")
                 {
-                    Console.WriteLine("Alarm " + ausgeloesterAlarm.getName() + " wurde ausgelöst");
+                    Environment.Exit(0);
                 }
-
             }
+
         }
     }
 }
