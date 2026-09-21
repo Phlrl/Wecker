@@ -1,19 +1,16 @@
-using System.Runtime.InteropServices;
-using Microsoft.VisualBasic;
-
 namespace Wecker
 {
     public class Wecker
     {
-        private Wecker instance;
+        private static Wecker instance = new Wecker();
         public List<Alarm> alarms = new List<Alarm>(); //constucor liste
 
-        public Wecker()
+        private Wecker()
         {
             
         }
 
-        public Wecker getInstance()
+        public static Wecker getInstance()
         {
             return instance;
         }
