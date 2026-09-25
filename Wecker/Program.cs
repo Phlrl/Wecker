@@ -61,6 +61,7 @@ namespace Wecker
             
             while (true)
             {
+                //Console.Beep(1000, 500);
                 Console.WriteLine("Stop eingeben um Wecker zu beenden");
                 string eingabe = Console.ReadLine();
                 if (eingabe == "Stop")
