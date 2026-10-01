@@ -45,7 +45,7 @@ namespace Wecker
 
             using SqliteConnection connection = new SqliteConnection(connectionString); // using benutzt obj nur solange wie es muss in dem fall connection vom typ SqliteConnection (wird hier neu instanziiert und Zuwioesung von parametern)
             connection.Open(); //öffnet die connection
-
+        
             Console.WriteLine("verbunden mit der datenbak");
 
             // create tabel
@@ -62,7 +62,7 @@ namespace Wecker
                 uebergebungscommand.ExecuteNonQuery(); // Methodenaufruf aud der variable command
             }
 
-            Console.WriteLine("create ta ble erfolgreich");
+            Console.WriteLine("create table erfolgreich");
 
 
             // Insert into
@@ -89,8 +89,10 @@ namespace Wecker
             {
                 using (SqliteDataReader reader = commandSelect.ExecuteReader()) //vibe code
                 {
-                    while (reader.Read())
+                    while (reader.Read())  // Reader.Read liefert nächste Zeile von Query Result
                     {
+                        // Nit reader["ID"] bekomme ich den Wert der Spalte ID
+                        string id = (string)reader["ID"];
                         Console.WriteLine(
                             $"ID: {reader["ID"]}, Uhrzeit: {reader["Uhrzeit"]}, Aktiv: {reader["Aktiv"]}" //while reader führt die query aus und gibt die werte zurück
                         );
