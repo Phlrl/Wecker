@@ -56,7 +56,7 @@ namespace Wecker
                         Aktiv INTEGER
                     );
                     """; //mehrzeiliger string also 6 * " alternative -> \n
-
+            //sqliteconnection wird geschlossen wegen dem using 
             using (SqliteCommand uebergebungscommand = new SqliteCommand(sql, connection)) //erzeugt neuen sql befehlübergeben wird "sql" und "connection" -> obj wird in der variable command gespeicher (typ : sqlite Command)
             {
                 uebergebungscommand.ExecuteNonQuery(); // Methodenaufruf aud der variable command
