@@ -94,7 +94,7 @@ namespace Wecker
                         // Nit reader["ID"] bekomme ich den Wert der Spalte ID
                         string id = (string)reader["ID"];
                         Console.WriteLine(
-                            $"ID: {reader["ID"]}, Uhrzeit: {reader["Uhrzeit"]}, Aktiv: {reader["Aktiv"]}" //while reader führt die query aus und gibt die werte zurück
+                            $"ID: {reader["ID"]}, Uhrzeit: {reader["Uhrzeit"]}, Aktiv: {reader["Aktiv"]}" //visualisierung der columns mit dem reader also für jedes einzeln mit den bracets
                         );
                     }
                 } // vibe code
