@@ -56,7 +56,7 @@ namespace Wecker
                         Aktiv INTEGER
                     );
                     """; //mehrzeiliger string also 6 * " alternative -> \n
-
+            //sqliteconnection wird geschlossen wegen dem using 
             using (SqliteCommand uebergebungscommand = new SqliteCommand(sql, connection)) //erzeugt neuen sql befehlübergeben wird "sql" und "connection" -> obj wird in der variable command gespeicher (typ : sqlite Command)
             {
                 uebergebungscommand.ExecuteNonQuery(); // Methodenaufruf aud der variable command
@@ -94,7 +94,7 @@ namespace Wecker
                         // Nit reader["ID"] bekomme ich den Wert der Spalte ID
                         string id = (string)reader["ID"];
                         Console.WriteLine(
-                            $"ID: {reader["ID"]}, Uhrzeit: {reader["Uhrzeit"]}, Aktiv: {reader["Aktiv"]}" //while reader führt die query aus und gibt die werte zurück
+                            $"ID: {reader["ID"]}, Uhrzeit: {reader["Uhrzeit"]}, Aktiv: {reader["Aktiv"]}" //visualisierung der columns mit dem reader also für jedes einzeln mit den bracets
                         );
                     }
                 } // vibe code
