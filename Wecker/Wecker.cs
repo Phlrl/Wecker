@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 namespace Wecker
 {
     public class Wecker

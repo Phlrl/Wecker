@@ -102,7 +102,7 @@ namespace Wecker
 
             p = new Program();
 
-            p.w = Wecker.getInstance();
+            p.w = Wecker.getInstance(); 
 
             DateTime aktuelleZeit = DateTime.Now;
             DateTime aktuelleZeitPlus10Sek = aktuelleZeit.AddSeconds(10);

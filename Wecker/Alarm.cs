@@ -1,5 +1,3 @@
-using System.Dynamic;
-
 namespace Wecker
 {
     public class Alarm
