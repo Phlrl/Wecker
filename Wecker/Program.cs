@@ -34,6 +34,7 @@ namespace Wecker
 
                 foreach (var ausgeloesterAlarm in al)
                 {
+                    //play mp3 here
                     Console.WriteLine("Alarm " + ausgeloesterAlarm.getName() + " wurde ausgelöst");
                 }
             }
